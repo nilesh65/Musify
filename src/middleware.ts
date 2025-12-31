@@ -41,11 +41,12 @@ export const isAuth = async (
     req.user = data;
 
     next();
-  } catch (error) {
+  }catch (error: any) {
+    console.error("AUTH ERROR:", error.response?.data || error.message);
     res.status(403).json({
       message: "Please Login",
     });
-  }
+}
 };
 
 //multer setup
